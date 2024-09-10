@@ -1,0 +1,98 @@
+/*
+COLOR PALETTE
+
+Navy Blue: #0A1128
+Dark Blue: #001F54
+Sea Blue: #034078
+Teal: #1282A2
+Off White: #FFFCFB
+
+*/
+
+/* Global Styles */
+/*-------------------*/
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #FFFCFB;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *before, *after {
+    box-sizing: inherit;
+}
+
+/* links */
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color:#1282a2;
+    text-decoration: underline;
+}
+
+footer a{
+    color: #fffcfb;
+}
+
+.btn {
+    background: #034078;
+    color: #FFFCFB;
+    text-decoration: none;
+}
+
+.content-wrapper{
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 900px;
+}
+
+/* Home Page */
+/*-------------------*/
+.home {
+    background: url(../images/bg-home-office-city.jpg) no-repeat;
+    background-size: cover;
+}
+
+.home .content-wrapper{
+    background: rgb(255 252 251 / 0.9);
+}
+
+/* Resume Page */
+/*-------------------*/
+
+.resume header::before {
+    background: url(../images/bg-coffee-shop.jpg) center / cover;
+    content: "";
+    display: block;
+    height: 375px;
+    
+}
+
+/* Footer */
+/*-------------------*/
+
+footer{
+    background-color: #0A1128;
+    color: #fffcfb;
+}
+
+.socials{
+    list-style-type: none;
+    padding: 0;
+}
+
+.socials li{
+    display: inline-block;
+}
+
+.socials img{
+    width: 32px;
+}
