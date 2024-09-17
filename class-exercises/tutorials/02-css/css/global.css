@@ -9,6 +9,16 @@ Off White: #FFFCFB
 
 */
 
+/* Variables */
+/*-------------------*/
+:root{
+    --navyBlue: #0A1128;
+    --darkBlue: #001F54;
+    --seaBlue: #034078;
+    --teal: #1282A2;
+    --offWhite: #FFFCFB;
+}
+
 /* Global Styles */
 /*-------------------*/
 
@@ -17,7 +27,7 @@ html, body {
 }
 
 body {
-    background-color: #FFFCFB;
+    background-color: var(--offWhite);
 }
 
 html {
@@ -34,7 +44,7 @@ a {
     text-decoration: none;
 }
 a:hover{
-    color:#1282a2;
+    color: var(--teal);
     text-decoration: underline;
 }
 
@@ -43,8 +53,8 @@ footer a{
 }
 
 .btn {
-    background: #034078;
-    color: #FFFCFB;
+    background: var(--seaBlue);
+    color: var(--offWhite);
     text-decoration: none;
 }
 
@@ -59,11 +69,20 @@ footer a{
 .home {
     background: url(../images/bg-home-office-city.jpg) no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
 .home .content-wrapper{
-    background: rgb(255 252 251 / 0.9);
+    flex: 1 0 auto;
 }
+
+.content-bg{
+    background: rgb(255 252 251 / 0.9);
+    padding: 30px;
+}
+
+
 
 /* Resume Page */
 /*-------------------*/
@@ -76,12 +95,40 @@ footer a{
     
 }
 
+.resume-section{
+    margin-bottom: 50px;
+}
+
+.resume-section h2{
+    border-bottom: 3px double var(--navyBlue);
+}
+
+.project-item {
+    display: flow-root;
+    margin: 30px 0;
+}
+
+.project-item img{
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+
+.work-item{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    column-gap: 25px;
+}
+
 /* Footer */
 /*-------------------*/
 
 footer{
-    background-color: #0A1128;
-    color: #fffcfb;
+    background-color: var(--navyBlue);
+    color: var(--offWhite);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 .socials{
@@ -91,8 +138,13 @@ footer{
 
 .socials li{
     display: inline-block;
+    margin-left: 10px;
 }
 
 .socials img{
     width: 32px;
+}
+
+.socials img:hover{
+    opacity: 0.5;
 }
