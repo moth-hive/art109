@@ -104,8 +104,16 @@ footer a{
 }
 
 .project-item {
+    opacity: 0;
+    transform: translateX(300px);
+    transition: opacity 1.5s, transform 1.5s;
     display: flow-root;
     margin: 30px 0;
+}
+
+.project-item.slide-in{
+    opacity: 1;
+    transform: translateX(0px);
 }
 
 .project-item img{
