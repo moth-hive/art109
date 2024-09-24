@@ -1,0 +1,48 @@
+:root{
+    --backColor: #000000;
+    --textColor: #FFFFFF;
+    --buttonColor: #303030
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--backColor);
+    margin: 0;
+    padding: 0;
+    display:flex;
+}
+
+.button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    background-color: var(--buttonColor);
+    color: var(--textColor);
+    border: 1px solid;
+    text-transform: uppercase;
+
+}
+
+li img{
+    width:100px;
+}
+
+.main-container{
+    margin: 0 auto;
+}
+
+.button-container1{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-container2{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
