@@ -27,12 +27,13 @@ body {
 
 }
 
-li img{
+.button img{
     width:100px;
 }
 
 .main-container{
     margin: 0 auto;
+    display:flex;
 }
 
 .button-container1{
