@@ -8,7 +8,7 @@ const backImg = document.querySelector('.map-img');
 document.addEventListener("DOMContentLoaded", () => {
     console.log("HEY HEY HEY! WE'RE LIVE!");
     
-    
+    document.querySelector('.map-img').addEventListener("animationend", () => document.querySelector('.map-img').style.animationName = '');
     
 });
 
