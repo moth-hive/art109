@@ -13,28 +13,25 @@
     <section class="main-container">
         <div class="button-container1">
             <div>
-                <div class="button top" onclick="">
+                <div class="button" id="up" onclick="moveWindow('up')">
                     <img src="images/arrow-up.png">
                 </div>
             </div>
             <div class="button-container2">
-                <div class="button left" onclick="">
+                <div class="button" id="left" onclick="moveWindow('left')">
                     <img src="images/arrow-left.png">
                 </div>
-                <div class="button right" onclick="">
+                <div class="button" id="right" onclick="moveWindow('right')">
                     <img src="images/arrow-right.png">
                 </div>
             </div>
             <div>
-                <div class="button bottom" onclick="">
+                <div class="button" id="down" onclick="moveWindow('down')">
                     <img src="images/arrow-down.png">
                 </div>
             </div>
         </div>
-        <div id="map-display">
-            <img id="map-img" src="images/test-sewer.jpg">
-        </div>
-       
+        <img class="map-img" src="images/test-sewer.jpg">   
     </section>
 
 </body>

@@ -1,10 +1,10 @@
-:root{
+:root {
     --backColor: #000000;
     --textColor: #FFFFFF;
     --buttonColor: #303030
 }
 
-html{
+html {
     font-size: 62.5%;
 }
 
@@ -12,11 +12,11 @@ body {
     background-color: var(--backColor);
     margin: 0;
     padding: 0;
-    display:flex;
+    display: flex;
 }
 
-.button{
-    display:flex;
+.button {
+    display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
@@ -27,40 +27,98 @@ body {
 
 }
 
-.button img{
-    width:100px;
+.button img {
+    width: 100px;
 }
 
-#map-display img{
-    max-width: 100%;
-}
-
-.main-container{
-    margin: 0 auto;
-    display:grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-}
-
-#map-display{
-    position: fixed;
+.map-img {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
+    animation-duration: 1s;
 }
 
-.button-container1{
+#display-img{
+    
+}
+
+#temp-img{
+    transform: translate(100px 100px);
+    animation-duration: 1s;
+}
+
+/*Containers*/
+
+.main-container {
+    position: absolute;
+}
+
+.button-container1 {
+    position: inherit;
     display: flex;
     width: 100vw;
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    grid-row: 1;
 }
 
-.button-container2{
+.button-container2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: space-between;
     width: 100vw;
+}
+
+/*Animations*/
+
+@keyframes slideInUp{
+    from {
+        transform: translateY(150vw);
+        opacity: 0%;
+    }
+    
+    to {
+        transform: translate(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes slideInLeft{
+    from {
+        transform: translateX(150vw);
+        opacity: 0%;
+    }
+    
+    to {
+        transform: translate(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes slideInRight{
+    from {
+        transform: translateX(-150vw);
+        opacity: 0%;
+    }
+    
+    to {
+        transform: translate(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes slideInDown{
+    from {
+        transform: translateY(150vw);
+        opacity: 0%;
+    }
+    
+    to {
+        transform: translate(0);
+        opacity: 100%;
+    }
 }
