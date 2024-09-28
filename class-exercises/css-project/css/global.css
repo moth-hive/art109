@@ -32,6 +32,10 @@ body {
     width: 100px;
 }
 
+.disable {
+    opacity: 0;
+}
+
 .map-img {
     position: absolute;
     display: block;
