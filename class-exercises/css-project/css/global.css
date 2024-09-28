@@ -33,7 +33,7 @@ body {
 }
 
 .map-img {
-    position: relative;
+    position: absolute;
     display: block;
     width: 100vw;
     height: 100vh;
@@ -41,13 +41,11 @@ body {
     animation-duration: .5s;
 }
 
-#display-img{
-    
-}
+#display-img {}
 
-#temp-img{
-    transform: translate(100px 100px);
-    animation-duration: 0.5s;
+#temp-img {
+    transform: translate(150vw, 150vw);
+    z-index: 1;
 }
 
 /*Containers*/
@@ -64,6 +62,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 }
 
 .button-container2 {
@@ -74,52 +73,101 @@ body {
     width: 100vw;
 }
 
-/*Animations*/
-
-@keyframes slideInUp{
+/*////////////Animations//////////*/
+/* Slide in */
+@keyframes slideInUp {
     from {
         transform: translateY(150vw);
-        opacity: 0%;
+        opacity: 0;
     }
-    
+
     to {
         transform: translate(0);
-        opacity: 100%;
+        opacity: 100;
     }
 }
 
-@keyframes slideInLeft{
+@keyframes slideInLeft {
     from {
         transform: translateX(150vw);
-        opacity: 0%;
+        opacity: 0;
     }
-    
+
     to {
         transform: translate(0);
-        opacity: 100%;
+        opacity: 100;
     }
 }
 
-@keyframes slideInRight{
+@keyframes slideInRight {
     from {
         transform: translateX(-150vw);
-        opacity: 0%;
+        opacity: 0;
     }
-    
+
     to {
         transform: translate(0);
-        opacity: 100%;
+        opacity: 100;
     }
 }
 
-@keyframes slideInDown{
+@keyframes slideInDown {
     from {
         transform: translateY(-150vw);
-        opacity: 0%;
+        opacity: 0;
     }
-    
+
     to {
         transform: translate(0);
-        opacity: 100%;
+        opacity: 100;
+    }
+}
+
+/* Slide out */
+@keyframes slideOutUp {
+    from {
+        transform: translate(0);
+        opacity: 100;
+    }
+
+    to {
+        transform: translateY(-150vw);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translate(0);
+        opacity: 100;
+    }
+
+    to {
+        transform: translateX(-150vw);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translate(0);
+        opacity: 100;
+    }
+
+    to {
+        transform: translateX(150vw);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translate(0);
+        opacity: 100;
+    }
+
+    to {
+        transform: translateY(150vw);
+        opacity: 0;
     }
 }

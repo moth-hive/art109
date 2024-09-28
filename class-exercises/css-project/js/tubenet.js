@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("HEY HEY HEY! WE'RE LIVE!");
     
     //Resets the css animation tag once it's done doing its thing
-    document.querySelector('.map-img').addEventListener("animationend", () => document.querySelector('.map-img').style.animationName = '');
+    document.querySelector('.map-img').addEventListener("animationend", () => {
+        document.querySelector('#display-img').style.animationName = '';
+        document.querySelector('#temp-img').style.animationName = '';
+    });
     
 });
 
@@ -22,25 +25,33 @@ function moveWindow(btnID){
     switch(String(btnID)){
         case "up":
             console.log("MOVING UP");
-            document.querySelector('.map-img').style.animationName = 'slideInUp';
+            document.querySelector('#temp-img').style.transform= 'translate(0vw, 100vh)';
+            document.querySelector('#temp-img').style.animationName = 'slideInDown';
+            document.querySelector('#display-img').style.animationName = 'slideOutDown';
             posY += 1;
             break;
             
         case 'left':
             console.log("MOVING LEFT");
-            document.querySelector('.map-img').style.animationName = 'slideInLeft';
+            document.querySelector('#temp-img').style.transform= 'translate(100vw, -100vh)';
+            document.querySelector('#temp-img').style.animationName = 'slideInLeft';
+            document.querySelector('#display-img').style.animationName = 'slideOutLeft';
             posX -= 1;
             break;
             
         case 'right':
             console.log("MOVING RIGHT");
-            document.querySelector('.map-img').style.animationName = 'slideInRight';
+            document.querySelector('#temp-img').style.transform= 'translate(-100vw, -100vh)';
+            document.querySelector('#temp-img').style.animationName = 'slideInRight';
+            document.querySelector('#display-img').style.animationName = 'slideOutRight';
             posX += 1;
             break;
             
         case 'down':
             console.log("MOVING DOWN");
-            document.querySelector('.map-img').style.animationName = 'slideInDown';
+            document.querySelector('#temp-img').style.transform= 'translate(0vw, -100vh)';
+            document.querySelector('#temp-img').style.animationName = 'slideInUp';
+            document.querySelector('#display-img').style.animationName = 'slideOutUp';
             posY -= 1;
             break;
             
