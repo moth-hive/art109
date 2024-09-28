@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Resets the css animation tag once it's done doing its thing
     document.querySelector('.map-img').addEventListener("animationend", () => {
+        document.querySelector('#display-img').src = document.querySelector('#temp-img').src
+        
         document.querySelector('#display-img').style.animationName = '';
         document.querySelector('#temp-img').style.animationName = '';
     });
