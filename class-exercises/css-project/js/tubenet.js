@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Resets the css animation tag once it's done doing its thing
     document.querySelector('.map-img').addEventListener("animationend", () => {
-        document.querySelector('#display-img').src = document.querySelector('#temp-img').src
+        //Sets the current display to the one that slid in for a seamless transition
+        document.querySelector('#display-img').src = document.querySelector('#temp-img').src;
         
         document.querySelector('#display-img').style.animationName = '';
         document.querySelector('#temp-img').style.animationName = '';
@@ -20,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Movement script for navigation. Pressing a button will move the scene and increment the position based on which button is pressed.
-//[TODO] Add slideout animations for the current image.
+//Additionally looks up what screen should slide in upon clicking a button
+//[TODO]Make that lookup table lol
 function moveWindow(btnID){
     console.log(btnID);
     
