@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Sets the current display to the one that slid in for a seamless transition
         document.querySelector('#display-img').src = document.querySelector('#temp-img').src;
         if(document.querySelector('#display-img').src != document.querySelector('#temp-img').src){
-            console.log("Image transfer failed???")
+            console.log("Image transfer failed???");
         }
         
         document.querySelector('#display-img').style.animationName = '';
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Additionally looks up what screen should slide in upon clicking a button
 //[TODO]Make that lookup table lol
 function moveWindow(btnID){
-    console.log(btnID);
+    //console.log(btnID);
     
     switch(String(btnID)){
         case "up":
