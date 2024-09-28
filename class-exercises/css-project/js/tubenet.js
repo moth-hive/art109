@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.map-img').addEventListener("animationend", () => {
         //Sets the current display to the one that slid in for a seamless transition
         document.querySelector('#display-img').src = document.querySelector('#temp-img').src;
+        if(document.querySelector('#display-img').src != document.querySelector('#temp-img').src){
+            console.log("Image transfer failed???")
+        }
         
         document.querySelector('#display-img').style.animationName = '';
         document.querySelector('#temp-img').style.animationName = '';
