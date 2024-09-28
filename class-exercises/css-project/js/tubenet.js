@@ -9,8 +9,8 @@ if (location.pathname.includes("/index.html")) {
 
 //Environment variable to preload all the necessary info
 var env = {
-    posX: 0, //Starting X
-    posY: 0, //Starting Y
+    posX: 2, //Starting X
+    posY: 2, //Starting Y
     tunnelTypes: {
         //Template tunnel object for default. Stands for "Not A Tunnel"
         NaT: {
@@ -88,6 +88,27 @@ function readMap(inputX, inputY){
     return outputTunnel;
 }
 
+//Function to disable exit arrows dynamically
+function disableExits(inputArray){
+    let exits = inputArray;
+    
+    if(!exits) {return;}//if there's no exits to disable, end immediately
+    else if(exits == 'all'){//if the string 'all' is input, disable all the exits
+        exits =['up', 'down', 'left', 'right'];
+    }
+    
+    let notExits = [];
+    for(i=0; i < exits.length; i++){
+        let tempBtnID = '#'
+        tempBtnID = tempBtnID.concat(exits[i]);
+        //console.log(tempBtnID);
+        document.querySelector(tempBtnID).setAttribute('class', 'button disable');
+        notExits[i] = exits[i];
+    }
+    
+    return notExits;
+}
+
 //Takes tunnel object as an input and disables direction buttons based on the object
 function updateDirections(){
     let tunnelObj = readMap(env.posX, env.posY);
@@ -103,18 +124,8 @@ function updateDirections(){
         return;
     }
     
-    let notExitsNum = tunnelObj.disabledExits.length;
-    let notExits = [];
-    
-    
-    //The disabler loop
-    for(i = 0; i < notExitsNum; i++){
-        let tempBtnID = '#';
-        tempBtnID = tempBtnID.concat(tunnelObj.disabledExits[i]);
-        //console.log(tempBtnID);
-        document.querySelector(tempBtnID).setAttribute('class', 'button disable');
-        notExits[i] = tunnelObj.disabledExits[i];
-    }
+    //The disablerrr
+    let notExits = disableExits(tunnelObj.disabledExits);
     
     //The enabler loop (messy)
     for(i = 0; i < 4; i++){
@@ -127,7 +138,6 @@ function updateDirections(){
 }
          
 //Movement script for navigation. Pressing a button will move the scene and increment the position based on which button is pressed.
-//[TODO] Disable button input while the animation is going
 function moveWindow(btnID) {
     //console.log(btnID);
 
@@ -135,6 +145,10 @@ function moveWindow(btnID) {
         case "up":
             if(!document.querySelector('#up').classList.contains('disable')){
                 console.log("MOVING UP");
+                disableExits('all');
+                let nextMap = readMap(env.posX, env.posY-1);
+                document.querySelector('#temp-img').src = nextMap.image;
+                
                 env.posY -= 1;
                 document.querySelector('#temp-img').style.transform = 'translate(0vw, 100vh)';
                 document.querySelector('#temp-img').style.animationName = 'slideInDown';
@@ -145,6 +159,10 @@ function moveWindow(btnID) {
         case 'left':
             if(!document.querySelector('#left').classList.contains('disable')){
                 console.log("MOVING LEFT");
+                disableExits('all');
+                let nextMap = readMap(env.posX-1, env.posY);
+                document.querySelector('#temp-img').src = nextMap.image;
+                
                 env.posX -= 1;
                 document.querySelector('#temp-img').style.transform = 'translate(100vw, -100vh)';
                 document.querySelector('#temp-img').style.animationName = 'slideInRight';
@@ -155,6 +173,10 @@ function moveWindow(btnID) {
         case 'right':
             if(!document.querySelector('#right').classList.contains('disable')){
                 console.log("MOVING RIGHT");
+                disableExits('all');
+                let nextMap = readMap(env.posX+1, env.posY);
+                document.querySelector('#temp-img').src = nextMap.image;
+                
                 env.posX += 1;
                 document.querySelector('#temp-img').style.transform = 'translate(-100vw, -100vh)';
                 document.querySelector('#temp-img').style.animationName = 'slideInLeft';
@@ -165,6 +187,10 @@ function moveWindow(btnID) {
         case 'down':
             if(!document.querySelector('#down').classList.contains('disable')){
                 console.log("MOVING DOWN");
+                disableExits('all');
+                let nextMap = readMap(env.posX, env.posY+1);
+                document.querySelector('#temp-img').src = nextMap.image;
+                
                 env.posY += 1;
                 document.querySelector('#temp-img').style.transform = 'translate(0vw, -100vh)';
                 document.querySelector('#temp-img').style.animationName = 'slideInUp';
