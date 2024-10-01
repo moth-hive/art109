@@ -17,11 +17,11 @@ var env = {
             image: "images/test-sewer.jpg",
             disabledExits: []
         },
-        Straight1: {
-            image: "images/tunnel-1.jpg",
-            disabledExits: ['left', 'right']
+        Cross: {
+            image: "images/cross.jpg",
+            disabledExits: []
         },
-        Straight2: {
+        Straight1: {
             image: "images/tunnel-2.jpg",
             disabledExits: ['left', 'right']
         },
@@ -33,6 +33,14 @@ var env = {
             image: "images/turnright.jpg",
             disabledExits: ['up',  'left']
         },
+        LeftUp: {
+            image: "images/leftup.jpg",
+            disabledExits: ['down',  'right']
+        },
+        RightUp: {
+            image: "images/rightup.jpg",
+            disabledExits: ['down',  'left']
+        },
         TLeft1: {
             image: "images/tleft-1.jpg",
             disabledExits: ['right']
@@ -40,6 +48,10 @@ var env = {
         TRight1: {
             image: "images/tright-1.jpg",
             disabledExits: ['left']
+        },
+        TDown: {
+            image: "images/tdown.jpg",
+            disabledExits: ['up']
         },
         DeadEndUp: {
             image: "images/deadend1.jpg",
@@ -55,11 +67,11 @@ var env = {
         }
     },
     map: [
-        ['DeadEndUp', 'NaT', 'Right', 'Left', 'NaT'],
-        ['NaT', 'NaT', 'TLeft1', 'TRight1', 'NaT'],
-        ['NaT', 'NaT', 'Straight1', 'TRight1', 'DeadEndRight'],
-        ['NaT', 'NaT', 'TLeft1', 'NaT', 'Left'],
-        ['NaT', 'NaT', 'DeadEndDown', 'DeadEndDown', 'DeadEndRight']
+        ['DeadEndUp', 'DeadEndUp', 'Right', 'Left', 'NaT'],
+        ['Straight1', 'RightUp', 'Cross', 'TLeft1', 'NaT'],
+        ['TRight1', 'TDown', 'TLeft1', 'TRight1', 'DeadEndRight'],
+        ['Straight1', 'Straight1', 'TLeft1', 'Cross', 'Left'],
+        ['RightUp', 'LeftUp', 'DeadEndDown', 'DeadEndDown', 'DeadEndDown']
     ]
 };
 
