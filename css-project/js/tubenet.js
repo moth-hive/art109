@@ -70,7 +70,7 @@ var env = {
         ['DeadEndUp', 'DeadEndUp', 'Right', 'Left', 'NaT'],
         ['Straight1', 'RightUp', 'Cross', 'TLeft1', 'NaT'],
         ['TRight1', 'TDown', 'TLeft1', 'TRight1', 'DeadEndRight'],
-        ['Straight1', 'Straight1', 'TLeft1', 'Cross', 'Left'],
+        ['Straight1', 'Straight1', 'TRight1', 'Cross', 'Left'],
         ['RightUp', 'LeftUp', 'DeadEndDown', 'DeadEndDown', 'DeadEndDown']
     ]
 };
