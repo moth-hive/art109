@@ -9,27 +9,37 @@ import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
 
-let scene, camera, renderer, controls, loader;
-let grass, sun, light;
+let scene, camera, renderer, controls, loader, mixer;
+let grass, sun, light, carbuncle;
+const clock = new THREE.Clock();
+let sunScroll = 0;
+let sceneContanier = document.querySelector("#scene-container");
 
 // Preliminary starter things to set up the scene and camera
 function init(){
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, sceneContanier.clientWidth/sceneContanier.clientHeight, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true
     });
+    
+    // scene is parented to a container and constrained to that size
+    renderer.setSize(sceneContanier.clientWidth, sceneContanier.clientHeight);
+    sceneContanier.appendChild(renderer.domElement);
+    
+    /* scene is window size and parented to the document body
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    */
     
     loadAddons();
     loadScene();
 }
 
 function loadAddons(){
-    controls = new OrbitControls(camera, renderer.domElement);
+    //controls = new OrbitControls(camera, renderer.domElement);
     loader = new GLTFLoader(); // to load 3d models
 }
 
@@ -51,23 +61,30 @@ function loadScene(){
     sun = new THREE.Mesh(geometry2, material2);
     scene.add(sun);
     
-    sun.position.z = -60;
-    sun.position.y = 35;
+    sun.position.z = 0;
+    sun.position.y = 25;
     sun.position.x = -30;
     
     //little guy
     loader.load('assets/carbuncle.gltf', function(gltf){
-        const carbuncle = gltf.scene;
+        carbuncle = gltf.scene;
         carbuncle.scale.set(2,2,2);
-        carbuncle.position.set(0,-1,0);
-        carbuncle.rotation.set(0,0.3,0);
+        carbuncle.position.y = -1;
         
         scene.add(carbuncle);
+        mixer = new THREE.AnimationMixer(carbuncle);
+        const clips = gltf.animations;
+        const clip = THREE.AnimationClip.findByName(clips, 'TailWag');
+        const action = mixer.clipAction(clip);
+        action.play();
     });
     
     light = new THREE.AmbientLight(0xFFFFFF);
     
     camera.position.z = 5;
+    camera.position.y = 1;
+    camera.position.x = 3;
+    camera.rotation.y = DegreeToRadians(45);
 }
 
 //Animation loop
@@ -76,14 +93,25 @@ function animate(){
     
     sun.rotation.y += 0.002;
     
+    mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 }
 
+addEventListener("wheel", (event) => {
+    sunScroll += event.deltaY;
+    
+    sun.position.x = 45 * Math.sin(sunScroll/1000);
+    sun.position.z = 40 * Math.cos(sunScroll/1000);
+    console.log(event.deltaY);
+    console.log(sun.position.x);
+    
+});
+
 //Adjusts the camera when the window resizes
 function onWindowResize(){
-    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.aspect = sceneContanier.clientWidth/sceneContanier.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(sceneContanier.clientWidth, sceneContanier.clientHeight);
 }
 
 window.addEventListener('resize', onWindowResize, false);
