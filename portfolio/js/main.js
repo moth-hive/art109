@@ -9,7 +9,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
 
-let scene, camera, renderer, controls, loader, mixer;
+let scene, camera, renderer, controls, loader;
+let mixer;
 let grass, sun, light, carbuncle;
 const clock = new THREE.Clock();
 let sunScroll = 0;
@@ -83,8 +84,8 @@ function loadScene(){
     
     camera.position.z = 5;
     camera.position.y = 1;
-    camera.position.x = 3;
-    camera.rotation.y = DegreeToRadians(45);
+    camera.position.x = -1;
+    camera.rotation.y = DegreeToRadians(30);
 }
 
 //Animation loop
@@ -92,17 +93,18 @@ function animate(){
     requestAnimationFrame(animate);
     
     sun.rotation.y += 0.002;
+    sunScroll += 1;
     
+    sun.position.x = 45 * Math.sin(sunScroll/1000);
+    sun.position.z = 40 * Math.cos(sunScroll/1000);
     mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 }
 
 addEventListener("wheel", (event) => {
-    sunScroll += event.deltaY;
+    sunScroll += event.deltaY/3;
     
-    sun.position.x = 45 * Math.sin(sunScroll/1000);
-    sun.position.z = 40 * Math.cos(sunScroll/1000);
-    console.log(event.deltaY);
+    //console.log(event.deltaY);
     console.log(sun.position.x);
     
 });
