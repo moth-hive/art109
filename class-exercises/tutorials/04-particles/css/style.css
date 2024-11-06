@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+}
+
+canvas {
+    
+}
+
+#scene-container {
+    width: vw;
+    height: 900px;
+    background-color: black;
+    background-size: cover;
+    margin: 0 auto;
+}

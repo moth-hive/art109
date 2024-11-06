@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Test</title>
+    
+    <style>
+        body, html, #particle{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #particle{
+            overflow: hidden;
+        }
+        
+        #particle canvas{
+            display: block;
+            position: fixed;
+            top: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particle">
+        <canvas></canvas>
+    </div>
+    
+    <script type="module">
+        //import the particles using threejs hyperlinks
+
+        import {particlesCursor} from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js'
+        
+        const pc = particlesCursor({
+            el: document.getElementById('particle'),
+            gpgpuSize: 512,
+            color: [0x0000ff],
+            coordScale: 0.19,
+            noiseIntensity: 0.009
+        });
+    </script>
+</body>
+</html>
