@@ -56,7 +56,16 @@ body {
 .content-wrapper {
     margin: 0 auto;
     padding: 30px;
-    max-width: 900px;
+    max-width: 1200px;
+}
+
+.grid-wrapper{
+    margin: 0 auto;
+    padding: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 /*Page Content*/
@@ -101,13 +110,58 @@ body {
     padding: 0 5px;
 }
 
+/* Project Menu */
+/*--------------------*/
+.project-item {
+    background-color: var(--lightGrey);
+    padding: 5px;
+    border: 5px solid;
+    border-color: white black black white;
+    display: flex;
+    text-decoration: none;
+}
+
+{
+    
+}
+
+.project-item img{
+    padding: 5px;
+    width: 100px;
+}
+
+.project-item:hover{
+    opacity: 75%;
+}
+
+.project-item:active{
+    border-color: black white white black;
+}
+
+.item-text *{
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.item-text p{
+    margin: 0;
+}
+
+.item-text h1{
+    font-size: 2rem;
+    margin: 0;
+}
+
 
 /* Nav Bar */
 /*--------------------*/
 header {
+    padding: 10px;
     display: flex;
     align-items: center;
     gap: 40px;
+    border-bottom: solid white;
+    background-color: var(--lightGrey);
 }
 
 .logo{
@@ -118,14 +172,31 @@ nav {
     display: flex;
     flex: 1 0 auto;
     list-style-type: none;
-    gap: 100px;
+    gap: 20px;
 }
 
 nav .btn{
+    display: flex;
     margin: auto 0;
     text-decoration: none;
     color: var(--textColor);
+    border: 5px solid;
+    border-color: white black black white;
     background-color: var(--lightGrey);
     padding: 10px;
     font-size: 3rem;
+}
+
+nav .btn:hover{
+    opacity: 75%;
+}
+
+nav .btn:active{
+    border-color: black white white black;
+}
+
+nav .btn img{
+    margin: auto 2px;
+    width: 40px;
+    
 }
