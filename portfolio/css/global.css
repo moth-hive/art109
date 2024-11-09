@@ -75,7 +75,7 @@ body {
     padding: inherit;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 50px;
     justify-content: center;
 }
 
@@ -126,12 +126,18 @@ body {
 
 .project-item{
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     align-items: center;
+    flex-basis: 100px;
 }
 
 .project-item h1{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /*
