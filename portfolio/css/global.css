@@ -127,7 +127,11 @@ body {
 .project-item{
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    align-items: center;
+}
+
+.project-item h1{
+    text-align: center;
 }
 
 /*
@@ -188,7 +192,6 @@ header {
 }
 
 .gutter{
-    width: 100%;
     padding: 0px;
     border: 5px ridge;
     border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
