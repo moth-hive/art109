@@ -64,6 +64,49 @@ body {
     box-sizing: inherit;
 }
 
+.btn{
+    display: flex;
+    align-content: center;
+    margin: auto 0;
+    text-decoration: none;
+    color: var(--darkText);
+    border: 5px ridge;
+    border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
+    background-color: var(--darkMain);
+    padding: 4;
+}
+
+.btn:hover{
+    opacity: 75%;
+}
+
+.btn:active{
+    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
+}
+
+.btn p{
+    display: block;
+    margin: 0;
+}
+
+.btn img{ /*Smoothing stuff via https://nullsleep.tumblr.com/post/16417178705/how-to-disable-image-smoothing-in-modern-web*/
+    margin: auto 2px;
+    width: 32px;
+    height: auto;
+    image-rendering: optimizeSpeed;             /* FUCK SMOOTHING, GIVE ME SPEED  */
+ 	image-rendering: -moz-crisp-edges;          /* Firefox                        */
+ 	image-rendering: -o-crisp-edges;            /* Opera                          */
+ 	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+ 	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+ 	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+.gutter{
+    padding: 0px;
+    border: 5px ridge;
+    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
+}
+
 .content-wrapper {
     margin: 0 auto;
     padding: 30px;
@@ -82,29 +125,66 @@ body {
 /*Page Content*/
 /*--------------------*/
 
-.page-content {
-    background-color: var(--darkMain);
-    width: 100%;
-    padding: 10px;
+.page-header{
+    background-color: var(--darkBack);
+    display: flex;
+    border: solid;
+    border-color: var(--darkMain);
+    align-items: center;
+    justify-content: space-between;
 }
 
-.page-content img{
+.title{
+    display: flex;
+}
+
+.ui-buttons{
+    display: flex;
+    margin: 3px;
+}
+
+.ui-buttons a{
+    background-color: var(--darkHighlight);
+}
+
+.page-header img{
+    /*Smoothing stuff via https://nullsleep.tumblr.com/post/16417178705/how-to-disable-image-smoothing-in-modern-web*/
+    margin: auto 2px;
+    width: 32px;
+    height: auto;
+    image-rendering: optimizeSpeed;             /* FUCK SMOOTHING, GIVE ME SPEED  */
+ 	image-rendering: -moz-crisp-edges;          /* Firefox                        */
+ 	image-rendering: -o-crisp-edges;            /* Opera                          */
+ 	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+ 	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+ 	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+.page-content {
+    background-color: var(--darkMain);
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    border: 5px ridge;
+    border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
+}
+
+.image-container img{
     margin: 0 auto;
     display: block;
     height: 30vh;
 }
 
 .page-content h1{
-    background-color: var(--darkHighlight);
     font-size: 3rem;
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
 }
 
 .image-container {
     padding: 0;
     margin: 15px;
-    background-color: var(--darkBack);
+    background-color: var(--darkHighlight);
     max-height: 30vh;
 }
 
@@ -197,12 +277,6 @@ header {
     width: 100px;
 }
 
-.gutter{
-    padding: 0px;
-    border: 5px ridge;
-    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
-}
-
 clock {
     padding: 0px 15px;
 }
@@ -218,34 +292,10 @@ nav .btn.start{
     width: auto;
 }
 
-nav .btn{
-    display: flex;
-    margin: auto 0;
+nav .btn p{
     width: 200px;
-    text-decoration: none;
-    color: var(--darkText);
-    border: 5px ridge;
-    border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
-    background-color: var(--darkMain);
-    padding: 4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-nav .btn:hover{
-    opacity: 75%;
-}
-
-nav .btn:active{
-    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
-}
-
-nav .btn img{ /*Smoothing stuff via https://nullsleep.tumblr.com/post/16417178705/how-to-disable-image-smoothing-in-modern-web*/
-    margin: auto 2px;
-    width: 32px;
-    height: auto;
-    image-rendering: optimizeSpeed;             /* FUCK SMOOTHING, GIVE ME SPEED  */
- 	image-rendering: -moz-crisp-edges;          /* Firefox                        */
- 	image-rendering: -o-crisp-edges;            /* Opera                          */
- 	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
- 	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
- 	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
-}
