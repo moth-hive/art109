@@ -1,16 +1,27 @@
-/*
-COLOR PALETTE
-
-*/
-
-/* Variables */
+/* Color Palette */
 /*--------------------*/
 :root {
-    --darkBlue: #020918;
-    --lightGrey: #424e66;
-    --textColor: #f2f2f2;
-    --descriptionBack: #93a5be;
+    
+    /*Dark Mode Colors*/
+    --darkMain: #424e66;
+    --darkBack: #020a55;
+    --darkHighlight: #93a5be;
+    --darkText: #f2f2f2;
+    
+    
 }
+
+/* Fonts */
+/*--------------------*/
+
+@font-face {
+    font-family: 'silkscreen';
+    src: url('fonts/slkscr-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.silkscreen {font-family: silkscreen, sans-serif}
 
 /* Global Styles */
 /*--------------------*/
@@ -28,10 +39,10 @@ body {
 }
 
 body {
-    font-family: sans-serif;
-    color: var(--textColor);
+    font-family: silkscreen, sans-serif;
+    color: var(--darkText);
     background-size: cover;
-    background-color: var(--darkBlue);
+    background-color: var(--darkBack);
     display: flex;
     flex-direction:column;
     font-size: 1.5rem;
@@ -72,7 +83,7 @@ body {
 /*--------------------*/
 
 .page-content {
-    background-color: var(--lightGrey);
+    background-color: var(--darkMain);
     width: 100%;
     padding: 10px;
 }
@@ -84,7 +95,7 @@ body {
 }
 
 .page-content h1{
-    background-color: var(--descriptionBack);
+    background-color: var(--darkHighlight);
     font-size: 3rem;
     margin: 0;
     padding: 0 10px;
@@ -93,17 +104,17 @@ body {
 .image-container {
     padding: 0;
     margin: 15px;
-    background-color: var(--darkBlue);
+    background-color: var(--darkBack);
     max-height: 30vh;
 }
 
 .description {
-    background-color: var(--descriptionBack);
+    background-color: var(--darkHighlight);
     width: 900px;
     max-height: 40vh;
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: var(--darkBlue) var(--lightGrey);
+    scrollbar-color: var(--darkBack) var(--darkMain);
 }
 
 .description p{
@@ -112,35 +123,42 @@ body {
 
 /* Project Menu */
 /*--------------------*/
+
+.project-item{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+/*
 .project-item {
-    background-color: var(--lightGrey);
+    background-color: var(--darkMain);
     padding: 5px;
     border: 5px solid;
-    border-color: white black black white;
+    border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
     display: flex;
     text-decoration: none;
 }
-
-{
-    
-}
+*/
 
 .project-item img{
     padding: 5px;
     width: 100px;
 }
 
+/*
 .project-item:hover{
     opacity: 75%;
 }
 
 .project-item:active{
-    border-color: black white white black;
+    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
 }
+*/
 
-.item-text *{
+.project-item, .item-text{
     text-decoration: none;
-    color: var(--textColor);
+    color: var(--darkText);
 }
 
 .item-text p{
@@ -157,15 +175,27 @@ body {
 /*--------------------*/
 header {
     padding: 10px;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     gap: 40px;
-    border-bottom: solid white;
-    background-color: var(--lightGrey);
+    border-bottom: ridge var(--darkHighlight) 5px;
+    background-color: var(--darkMain);
 }
 
 .logo{
     width: 100px;
+}
+
+.gutter{
+    width: 100%;
+    padding: 0px;
+    border: 5px ridge;
+    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
+}
+
+clock {
+    padding: 0px 15px;
 }
 
 nav {
@@ -175,16 +205,20 @@ nav {
     gap: 20px;
 }
 
+nav .btn.start{
+    width: auto;
+}
+
 nav .btn{
     display: flex;
     margin: auto 0;
+    width: 200px;
     text-decoration: none;
-    color: var(--textColor);
-    border: 5px solid;
-    border-color: white black black white;
-    background-color: var(--lightGrey);
-    padding: 10px;
-    font-size: 3rem;
+    color: var(--darkText);
+    border: 5px ridge;
+    border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
+    background-color: var(--darkMain);
+    padding: 4;
 }
 
 nav .btn:hover{
@@ -192,11 +226,17 @@ nav .btn:hover{
 }
 
 nav .btn:active{
-    border-color: black white white black;
+    border-color: var(--darkBack) var(--darkHighlight) var(--darkHighlight) var(--darkBack);
 }
 
-nav .btn img{
+nav .btn img{ /*Smoothing stuff via https://nullsleep.tumblr.com/post/16417178705/how-to-disable-image-smoothing-in-modern-web*/
     margin: auto 2px;
-    width: 40px;
-    
+    width: 32px;
+    height: auto;
+    image-rendering: optimizeSpeed;             /* FUCK SMOOTHING, GIVE ME SPEED  */
+ 	image-rendering: -moz-crisp-edges;          /* Firefox                        */
+ 	image-rendering: -o-crisp-edges;            /* Opera                          */
+ 	image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+ 	image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+ 	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
 }
