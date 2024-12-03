@@ -61,8 +61,8 @@ function loadScene(){
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     
     //Textures
-    const loader = new THREE.TextureLoader();
-    const starTex = loader.load("./assets/sprite_moth.png");
+    const texLoader = new THREE.TextureLoader();
+    const starTex = texLoader.load("./assets/sprite_moth.png");
     
     //Material
     const material1 = new THREE.PointsMaterial({
